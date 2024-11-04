@@ -4,12 +4,6 @@ package com.coderscampus.updatedarraylist;
 
 import java.util.Arrays;
 
-// to add an element to an array we need to 
-//make sure that it is still the same array 
-//a. check and see if there is an index that we can add to 
-//b.find where the first empty space would be
-//c. we now need to determine if the current array is full
-// d. then have it double in size somehow probably with newItems
 
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
@@ -81,8 +75,14 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-		// TODO Auto-generated method stub
-		return false;
+if(index>=0&& index==items.length) {
+		items[index]=item;
+		return true;
+}
+else {
+	return false;
+	
+}
 	}
 
 	@Override

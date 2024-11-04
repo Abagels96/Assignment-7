@@ -23,8 +23,25 @@ class CustomArrayListTest {
 		
 		boolean ans= sut.add("I");
 		//Assert
-	assertEquals(false, ans);
+	assertEquals(true, ans);
+	assertEquals(sut.get(0),"I");
+	assertEquals(sut.getSize(),1);
+	
 	
 	}
+	
+	@Test
+	void should_add_item_at_index() {
+		//Arrange
+		CustomArrayList<String> sut= new CustomArrayList<String>();
+		//Act
+		sut.add("I");
+		boolean ans=sut.add(0, "fat");
+		//Assert
+		assertEquals(true,ans);
+		assertEquals(sut.get(0),"fat");
+		
+	}
+	
 
 }
