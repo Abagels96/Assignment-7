@@ -75,14 +75,29 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-if(index>=0&& index==items.length) {
+if(index>=0&& index<items.length) {
+	if(items[index]!= null) {
+		shiftRight(items);
 		items[index]=item;
+	}
+		
+		//need a method to move what is already there to the right one place 
+		System.out.println(Arrays.toString(items));
 		return true;
 }
 else {
 	return false;
 	
 }
+	}
+
+	private void shiftRight(Object[] items) {
+
+	Object last= items[items.length-1];
+System.arraycopy(items, 0, items, 1, items.length-1);
+items[0]=last;
+System.out.println(items);
+	
 	}
 
 	@Override

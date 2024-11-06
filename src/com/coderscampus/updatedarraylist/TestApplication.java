@@ -20,7 +20,7 @@ public class TestApplication {
 System.out.println(customArrayList.get(10));
 		System.out.println(customArrayList.getSize());
 		System.out.println(customArrayList.get(0));
-
+System.out.println(customArrayList.add(5, "fat"));
 
 
 	}

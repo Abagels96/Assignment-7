@@ -36,10 +36,16 @@ class CustomArrayListTest {
 		CustomArrayList<String> sut= new CustomArrayList<String>();
 		//Act
 		sut.add("I");
+		sut.add(0, "fat");
+		sut.add(1, "fatter");
+		sut.add("J");
+		assertEquals(sut.get(0),"I");
 		boolean ans=sut.add(0, "fat");
+		
 		//Assert
 		assertEquals(true,ans);
-		assertEquals(sut.get(0),"fat");
+	assertEquals(sut.get(0),"fat");
+	assertEquals(sut.get(1),"I");
 		
 	}
 	
