@@ -1,9 +1,6 @@
 package com.coderscampus.updatedarraylist;
 
-
-
 import java.util.Arrays;
-
 
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
@@ -27,8 +24,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 			return true;
 		}
 
-		// if array is full then double the items
-
+		System.out.println(Arrays.toString(items));
 		return false;
 
 	}
@@ -75,35 +71,49 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-if(index>=0&& index<items.length) {
-	if(items[index]!= null) {
-		shiftRight(items);
-		items[index]=item;
+		// takes index and item and then adds the item at the index.Everything else it
+		// shifts to the right and it doesn't leave behind null when it is moved
+		// somewhere else and then
+		// the items array goes back to normal.
+
+		if (index >= 0 && index < items.length) {
+			if (items[index] != null) {
+				items = shiftRight(items, index);
+				items[index] = item;
+			} else {
+				items[index] = item;
+			}
+
+			System.out.println(Arrays.toString(items));
+			return true;
+		} else {
+			throw new IndexOutOfBoundsException("Invalid exception" + index);
+		}
+
+//return false;
+
 	}
-		
-		//need a method to move what is already there to the right one place 
+
+	private Object[] shiftRight(Object[] items, int index) {
+		Object last = items[items.length - 1];
+
+		System.arraycopy(items, index, items, index + 1, items.length - index - 1);
 		System.out.println(Arrays.toString(items));
-		return true;
-}
-else {
-	return false;
-	
-}
-	}
+		return items;
 
-	private void shiftRight(Object[] items) {
-
-	Object last= items[items.length-1];
-System.arraycopy(items, 0, items, 1, items.length-1);
-items[0]=last;
-System.out.println(items);
-	
 	}
 
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
-		// TODO Auto-generated method stub
-		return null;
+		if (index >= 0 && index < items.length) {
+			Object last = items.length - index - 1;
+			System.arraycopy(items, index + 1, items, index, items.length - index - 1);
+			last = items[index];
+		} else {
+
+			return null;
+		}
+		return (T) items[index];
 	}
 
 }
