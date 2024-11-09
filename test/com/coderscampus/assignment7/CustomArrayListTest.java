@@ -94,6 +94,7 @@ class CustomArrayListTest {
 
 		// Assert
 		assertEquals(sut.get(7), "hot8");
+		assertEquals(sut.getSize(),20);
 
 	}
 

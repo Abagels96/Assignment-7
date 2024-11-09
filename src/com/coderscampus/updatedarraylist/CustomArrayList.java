@@ -80,17 +80,17 @@ public class CustomArrayList<T> implements CustomList<T> {
 			if (items[index] != null) {
 				items = shiftRight(items, index);
 				items[index] = item;
+				System.out.println(Arrays.toString(items));
 			} else {
 				items[index] = item;
 			}
 
-			System.out.println(Arrays.toString(items));
 			return true;
 		} else {
-			throw new IndexOutOfBoundsException("Invalid exception" + index);
+			return false;
+			
 		}
 
-//return false;
 
 	}
 
@@ -98,7 +98,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		Object last = items[items.length - 1];
 
 		System.arraycopy(items, index, items, index + 1, items.length - index - 1);
-		System.out.println(Arrays.toString(items));
+//		System.out.println(Arrays.toString(items));
 		return items;
 
 	}
@@ -109,6 +109,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 			Object last = items.length - index - 1;
 			System.arraycopy(items, index + 1, items, index, items.length - index - 1);
 			last = items[index];
+			Arrays.toString(items);
 		} else {
 
 			return null;
