@@ -109,10 +109,10 @@ public class CustomArrayList<T> implements CustomList<T> {
 	public T remove(int index) throws IndexOutOfBoundsException {
 		System.out.println(items[index]);
 		if (index >= 0 ||index < items.length) {
+			System.out.println(Arrays.toString(items));
 			removeIndex(index);
 			size--;
 			
-			System.out.println(Arrays.toString(items));
 		} else {
 
 			return null;
@@ -124,9 +124,11 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	public void removeIndex(int index) {
-		Object last= items[items.length-1];
 		System.arraycopy(items, index + 1, items, index, items.length -index-1);
-		System.out.println(last);
+		Object last= items.length-1;
+		
+//	items=	Arrays.copyOf(items, items.length-1);
+		
 		System.out.println(Arrays.toString(items));
 	}
 
