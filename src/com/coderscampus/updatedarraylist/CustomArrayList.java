@@ -80,9 +80,11 @@ public class CustomArrayList<T> implements CustomList<T> {
 			if (items[index] != null) {
 				items = shiftRight(items, index);
 				items[index] = item;
+				size++;
 				System.out.println(Arrays.toString(items));
 			} else {
 				items[index] = item;
+				size++;
 			}
 
 			return true;
@@ -108,6 +110,9 @@ public class CustomArrayList<T> implements CustomList<T> {
 		System.out.println(items[index]);
 		if (index >= 0 ||index < items.length) {
 			removeIndex(index);
+			size--;
+			
+			System.out.println(Arrays.toString(items));
 		} else {
 
 			return null;
@@ -119,8 +124,9 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	public void removeIndex(int index) {
-		System.arraycopy(items, index + 1, items, index, items.length - index-1);
-		
+		Object last= items[items.length-1];
+		System.arraycopy(items, index + 1, items, index, items.length -index-1);
+		System.out.println(last);
 		System.out.println(Arrays.toString(items));
 	}
 

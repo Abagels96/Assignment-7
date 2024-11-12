@@ -47,6 +47,8 @@ for(int i=0;i<20;i++) {
 		assertEquals(sut.get(0), "fat");
 		assertEquals(sut.get(1), "fatter");
 		assertEquals(sut.get(5), "J");
+		// it doesn't seem to pick up on the indexed add, but that is probably because it doesn't add to the size variable
+		assertEquals(sut.getSize(),4);
 
 	}
 
@@ -98,7 +100,7 @@ for(int i=0;i<20;i++) {
 		// Assert
 		assertEquals(sut.getSize(),22);
 		assertEquals(sut.get(7), "hot8");
-		// this is also saying that the size is one off at 22
+		// this is also saying that the size is one off at 22 but probably doesn't access the size variable. Now I am frustrated
 //		assertEquals(sut.getSize(),21);
 
 	}
