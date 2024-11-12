@@ -23,8 +23,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 			size++;
 			return true;
 		}
-
 		System.out.println(Arrays.toString(items));
+
 		return false;
 
 	}
@@ -105,16 +105,23 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
-		if (index >= 0 && index < items.length) {
-			Object last = items.length - index - 1;
-			System.arraycopy(items, index + 1, items, index, items.length - index - 1);
-			last = items[index];
-			Arrays.toString(items);
+		System.out.println(items[index]);
+		if (index >= 0 ||index < items.length) {
+			removeIndex(index);
 		} else {
 
 			return null;
 		}
+		
+		// this might be returning the items at the index after the removeIndex method has run. I wonder if I could see what
+		// it is returning at the start of the method. yep that is what is happening.now how do I fix it? That is the real question.
 		return (T) items[index];
+	}
+
+	public void removeIndex(int index) {
+		System.arraycopy(items, index + 1, items, index, items.length - index-1);
+		
+		System.out.println(Arrays.toString(items));
 	}
 
 }
