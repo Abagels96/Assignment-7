@@ -10,10 +10,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public boolean add(T item) {
 
-		//
-
 		if (size == items.length) {
-			System.out.println("Array is full");
 			items = isArrayFull(items);
 			items[size] = item;
 			size++;
@@ -23,7 +20,6 @@ public class CustomArrayList<T> implements CustomList<T> {
 			size++;
 			return true;
 		}
-		System.out.println(Arrays.toString(items));
 
 		return false;
 
@@ -71,17 +67,12 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-		// takes index and item and then adds the item at the index.Everything else it
-		// shifts to the right and it doesn't leave behind null when it is moved
-		// somewhere else and then
-		// the items array goes back to normal.
 
 		if (index >= 0 && index < items.length) {
 			if (items[index] != null) {
 				items = shiftRight(items, index);
 				items[index] = item;
 				size++;
-				System.out.println(Arrays.toString(items));
 			} else {
 				items[index] = item;
 				size++;
@@ -90,9 +81,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 			return true;
 		} else {
 			return false;
-			
-		}
 
+		}
 
 	}
 
@@ -100,36 +90,23 @@ public class CustomArrayList<T> implements CustomList<T> {
 		Object last = items[items.length - 1];
 
 		System.arraycopy(items, index, items, index + 1, items.length - index - 1);
-//		System.out.println(Arrays.toString(items));
 		return items;
 
 	}
 
 	@Override
-	public T remove(int index) throws IndexOutOfBoundsException {
-		System.out.println(items[index]);
-		if (index >= 0 ||index < items.length) {
-			System.out.println(Arrays.toString(items));
-			removeIndex(index);
+	public T remove(int index) throws IndexOutOfBoundsException {f
+		Object removed = items[index];
+		if (index >= 0 && index < items.length) {
+			System.arraycopy(items, index + 1, items, index, items.length - index - 1);
+			items[size - 1] = null;
 			size--;
-			
 		} else {
 
 			return null;
 		}
-		
-		// this might be returning the items at the index after the removeIndex method has run. I wonder if I could see what
-		// it is returning at the start of the method. yep that is what is happening.now how do I fix it? That is the real question.
-		return (T) items[index];
-	}
+		return (T) removed;
 
-	public void removeIndex(int index) {
-		System.arraycopy(items, index + 1, items, index, items.length -index-1);
-		Object last= items.length-1;
-		
-//	items=	Arrays.copyOf(items, items.length-1);
-		
-		System.out.println(Arrays.toString(items));
 	}
 
 }
