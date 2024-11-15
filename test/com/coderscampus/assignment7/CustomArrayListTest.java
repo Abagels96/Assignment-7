@@ -28,16 +28,15 @@ for(int i=0;i<20;i++) {
 	void should_add_item_at_index() {
 		CustomArrayList<String> sut = new CustomArrayList<String>();
 		
+		boolean ans=sut.add(0, "fat");
 		sut.add("I");
 		sut.add(1, "fatter");
 		sut.add(5, "J");
-		boolean ans=sut.add(0, "fat");
 
 		assertEquals(true,ans);
 		assertEquals(sut.get(0), "fat");
-		assertEquals(sut.get(2), "fatter");
-		//this still doesn't work. 
-//		assertEquals(sut.get(5), "J");
+		assertEquals(sut.get(1), "fatter");
+		assertEquals(sut.get(5), "J");
 		assertEquals(sut.getSize(),4);
 
 	}
