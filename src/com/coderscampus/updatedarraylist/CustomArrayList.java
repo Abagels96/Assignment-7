@@ -14,14 +14,12 @@ public class CustomArrayList<T> implements CustomList<T> {
 			items = isArrayFull(items);
 			items[size] = item;
 			size++;
-			return true;
-		} else {
+		} 
 			items[size] = item;
 
 			size++;
-			return true;
-		}
-
+		
+return true;
 	}
 
 	{
