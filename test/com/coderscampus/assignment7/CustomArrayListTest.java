@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import com.coderscampus.updatedarraylist.CustomArrayList;
+import com.coderscampus.arraylist.CustomArrayList;
 
 class CustomArrayListTest {
 	@Test
