@@ -10,12 +10,10 @@ public class CustomArrayList<T> implements CustomList<T> {
 	public boolean add(T item) {
 
 		if (size == items.length) {
-			System.out.println("Array is full");
 			items = isArrayFull(items);
 		}
 		items[size] = item;
 		size++;
-		System.out.println(Arrays.toString(items));
 		return true;
 
 	}
@@ -30,21 +28,18 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	@Override
-	public T get(int index)throws IndexOutOfBoundsException {
+	public T get(int index) throws IndexOutOfBoundsException {
 
 		int i = index;
-		if (index >= 0 && index < size-1) {
+		if (index >= 0 && index <= size - 1) {
 
 			return (T) items[i];
 
-		}else if(index>size-1) {
+		} else  {
 			throw new IndexOutOfBoundsException();
 		}
-		
-	
-		
-		return null;
 
+// test this method 
 	}
 
 	public Object[] isArrayFull(Object[] items) {
@@ -57,19 +52,17 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 
-		if (index >= 0 && index <size) {
+		if (index >= 0 && index < size) {
 			if (items[index] != null) {
 				items = shiftRight(items, index);
 				items[index] = item;
-				System.out.println(Arrays.toString(items));
 			} else {
 				items[index] = item;
 			}
 
 			return true;
 		} else {
-			return false;
-
+throw new IndexOutOfBoundsException();
 		}
 
 	}
@@ -85,16 +78,15 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
 		Object removed = null;
-		if (index >= 0 && index < size-1) {
+		if (index >= 0 && index <= size - 1) {
 			removed = items[index];
 			System.arraycopy(items, index + 1, items, index, items.length - index - 1);
 			Arrays.toString(items);
 
-		}
-		else if(index>size-1) {
+		} else if (index > size - 1) {
 			throw new IndexOutOfBoundsException();
 		}
-		
+
 		return (T) removed;
 	}
 
