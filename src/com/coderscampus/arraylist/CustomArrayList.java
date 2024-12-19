@@ -53,22 +53,22 @@ public class CustomArrayList<T> implements CustomList<T> {
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 
 		if (index >= 0 && index < size) {
-			if (items[index] != null) {
 				items = shiftRight(items, index);
 				items[index] = item;
-			} else {
+				size++;
+			} else if(index==size) {
 				items[index] = item;
+				size++;
 			}
-
+			else {
+		throw new IndexOutOfBoundsException();
+			}
 			return true;
-		} else {
-throw new IndexOutOfBoundsException();
-		}
+		
 
 	}
 
 	private Object[] shiftRight(Object[] items, int index) {
-		Object last = items[items.length - 1];
 
 		System.arraycopy(items, index, items, index + 1, items.length - index - 1);
 		return items;

@@ -69,6 +69,17 @@ class CustomArrayListTest {
 		assertEquals("fatter", sut.get(1));
 
 	}
+	@Test
+	void should_add_items_at_index_zero() {
+		CustomArrayList<String>sut= new CustomArrayList<String>();
+		
+		boolean ans= sut.add(0, "item");
+		
+		assertTrue(ans);
+		assertEquals(1,sut.getSize());
+		
+		assertEquals("item", sut.get(0));
+	}
 
 	@Test
 	void should_return_true_when_index_is_specified() {
@@ -167,6 +178,19 @@ class CustomArrayListTest {
 			sut.add("color" + i);
 		}
 		sut.remove(15);
+		
+			
+		}
+	@Test
+	void should_remove_items_at_the_given_index() {
+		CustomArrayList<String> sut= new CustomArrayList<String>();
+	 for(int i=0; i<15;i++) {
+		 sut.add("pint"+i);
+		
+		
 	}
+	 sut.remove(14);
+assertEquals(13,sut.getSize());
+}
 
 }
