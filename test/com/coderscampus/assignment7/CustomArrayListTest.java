@@ -150,7 +150,9 @@ class CustomArrayListTest {
 			sut.add("item" + i);
 
 		}
-		assertEquals("item5", sut.get(5));
+		assertThrows(IndexOutOfBoundsException.class,()->{
+			sut.get(-1);
+		});
 	}
 
 	@Test
@@ -177,7 +179,9 @@ class CustomArrayListTest {
 		for (int i = 0; i < 10; i++) {
 			sut.add("color" + i);
 		}
-		sut.remove(15);
+		assertThrows(IndexOutOfBoundsException.class,()->{
+			sut.remove(15);
+		});
 		
 			
 		}

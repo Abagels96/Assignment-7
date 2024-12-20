@@ -57,6 +57,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 				items[index] = item;
 				size++;
 			} else if(index==size) {
+				isArrayFull(items);
 				items[index] = item;
 				size++;
 			}
@@ -77,17 +78,15 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
-		Object removed = null;
 		if (index >= 0 && index <= size - 1) {
-			removed = items[index];
-			System.arraycopy(items, index + 1, items, index, items.length - index - 1);
+ 			System.arraycopy(items, index + 1, items, index, items.length - index - 1);
 			Arrays.toString(items);
 
 		} else if (index > size - 1) {
 			throw new IndexOutOfBoundsException();
 		}
 
-		return (T) removed;
+		return (T) items[index];
 	}
 
 }
