@@ -60,6 +60,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 				isArrayFull(items);
 				items[index] = item;
 				size++;
+				System.out.println(Arrays.toString(items));
 			}
 			else {
 		throw new IndexOutOfBoundsException();
@@ -78,6 +79,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
+		Object removed = items[index];
 		if (index >= 0 && index <= size - 1) {
  			System.arraycopy(items, index + 1, items, index, items.length - index - 1);
 			Arrays.toString(items);
@@ -86,7 +88,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 			throw new IndexOutOfBoundsException();
 		}
 
-		return (T) items[index];
+		return (T) removed;
 	}
 
 }

@@ -153,6 +153,9 @@ class CustomArrayListTest {
 		assertThrows(IndexOutOfBoundsException.class,()->{
 			sut.get(-1);
 		});
+		assertThrows(IndexOutOfBoundsException.class,()->{
+			sut.get(7);
+		});
 	}
 
 	@Test
