@@ -71,11 +71,9 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	private Object[] shiftRight(Object[] items, int index) {
- if(index<=size) {
-		System.arraycopy(items, index, items, index + 1, items.length - index - 1);}
- else {
-	 System.arraycopy(items, index, items, size, size-1);
- }
+ if(index<size) {
+		System.arraycopy(items, index, items, index + 1, size - index - 1);}
+
 		return items;
  
 	}

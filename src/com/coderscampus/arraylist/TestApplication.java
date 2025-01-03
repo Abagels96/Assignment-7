@@ -12,11 +12,7 @@ public class TestApplication {
 			customArrayList.add("item " + i);
 
 		}
-		System.out.println(customArrayList.add(null));
-		System.out.println(customArrayList.add("Peanuts"));
-	System.out.println(customArrayList.add(22, "item22"));
-		System.out.println(customArrayList.remove(15));
-
+customArrayList.add(20, "yuck");
 	}
 
 }
