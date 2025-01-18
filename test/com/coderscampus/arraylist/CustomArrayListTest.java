@@ -9,9 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.coderscampus.arraylist.CustomArrayList;
 
-// Basic Successful Cases
-//Edge cases(empty list, full list)
-//Potential error conditons
+
 class CustomArrayListTest {
 	@Test
 	void should_add_item_to_array() {
@@ -60,12 +58,31 @@ class CustomArrayListTest {
 	@Test
 	void should_add_items_at_index() {
 		CustomArrayList<String> sut = new CustomArrayList<String>();
-// this failed because it exceeded size. 
 		 sut.add(0, "fat");
+		 sut.add(1,"fatter");
+		 
+		
 
 		assertEquals("fat", sut.get(0));
 		assertEquals("fatter", sut.get(1));
 
+	}
+	@Test
+	void should_throw_exception_adding_beyond_array() {
+		CustomArrayList<String> sut= new CustomArrayList<String>();
+		
+		
+		assertThrows(IndexOutOfBoundsException.class,()->{
+
+			sut.add(1, "happy");
+		
+		});
+		assertThrows(IndexOutOfBoundsException.class,()->{
+			
+			sut.add(-1, "happy");
+			
+		});
+		
 	}
 	@Test
 	void should_add_items_at_index_zero() {
@@ -198,10 +215,3 @@ assertEquals(14,sut.getSize());
 }
 
 }
-//Hey Abigail Bales, thanks for resubmitting your assignment! You’ve made some solid improvements, like better handling of index == size in the add(int index, T item) method and more consistent exception handling in remove(int index). However, there are still a few issues to address:
-	//1.	In add(int index, T item): Resizing is not handled properly when adding at index == size. Make sure to assign the resized array back to items when calling isArrayFull(items).
-//	2.	In remove(int index): The size is not decremented properly after removing an element, which leads to logical inconsistencies in the list.
-	//3.	In shiftRight: The System.arraycopy call can shift elements out of bounds, especially when adding elements near the end of the list. Adjust the range to avoid this.
-	//4.	Test Class: your CustomArrayListTest class is in the wrong package, which makes it complicated to run on my machine. I had to change the package name to com.coderscampus.arraylist (same as your main classes) and rebuild to be able to run your tests
-	//5.	Test Failures: Your tests (should_add_items_at_index, should_remove_item_at_given_index, should_remove_items_at_the_given_index) are failing. These highlight flaws in the shifting and resizing logic. Review the scenarios these tests are trying to validate and adjust your methods accordingly.
-// You’re very close! Focus on fixing these key areas, and you’ll be ready to resubmit. Let me know if you have questions or need clarification. Keep up the good work!
