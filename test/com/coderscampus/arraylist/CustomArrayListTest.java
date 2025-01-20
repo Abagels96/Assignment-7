@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import com.coderscampus.arraylist.CustomArrayList;
 
-
 class CustomArrayListTest {
 	@Test
 	void should_add_item_to_array() {
@@ -30,6 +29,18 @@ class CustomArrayListTest {
 
 		assertTrue(ans);
 
+	}
+	@Test 
+	void should_add_when_array_is_at_capacity() {
+		CustomArrayList<String> sut= new CustomArrayList<String>();
+		
+		for(int i=0; i<10;i++) {
+			sut.add(i, "string"+i);
+		}
+	boolean ans= sut.add(10, "string10");
+		assertTrue(ans);		
+		assertEquals(11, sut.getSize());
+		assertEquals("string10",sut.get(10));
 	}
 
 	@Test
@@ -58,41 +69,35 @@ class CustomArrayListTest {
 	@Test
 	void should_add_items_at_index() {
 		CustomArrayList<String> sut = new CustomArrayList<String>();
-		 sut.add(0, "fat");
-		 sut.add(1,"fatter");
-		 
-		
-
+		sut.add(0, "fat");
+		sut.add(1, "fatter");
 		assertEquals("fat", sut.get(0));
 		assertEquals("fatter", sut.get(1));
 
 	}
+
 	@Test
 	void should_throw_exception_adding_beyond_array() {
-		CustomArrayList<String> sut= new CustomArrayList<String>();
-		
-		
-		assertThrows(IndexOutOfBoundsException.class,()->{
+		CustomArrayList<String> sut = new CustomArrayList<String>();
 
+		assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.add(1, "happy");
-		
+
 		});
-		assertThrows(IndexOutOfBoundsException.class,()->{
-			
+		assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.add(-1, "happy");
-			
+
 		});
-		
+
 	}
+
 	@Test
 	void should_add_items_at_index_zero() {
-		CustomArrayList<String>sut= new CustomArrayList<String>();
-		
-		boolean ans= sut.add(0, "item");
-		
+		CustomArrayList<String> sut = new CustomArrayList<String>();
+		boolean ans = sut.add(0, "item");
 		assertTrue(ans);
-		assertEquals(1,sut.getSize());
-		
+		assertEquals(1, sut.getSize());
+
 		assertEquals("item", sut.get(0));
 	}
 
@@ -114,7 +119,6 @@ class CustomArrayListTest {
 			sut.add("cow" + i);
 		}
 		int result = sut.getSize();
-
 		assertEquals(result, 15);
 
 	}
@@ -165,10 +169,10 @@ class CustomArrayListTest {
 			sut.add("item" + i);
 
 		}
-		assertThrows(IndexOutOfBoundsException.class,()->{
+		assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.get(-1);
 		});
-		assertThrows(IndexOutOfBoundsException.class,()->{
+		assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.get(7);
 		});
 	}
@@ -196,22 +200,21 @@ class CustomArrayListTest {
 		for (int i = 0; i < 10; i++) {
 			sut.add("color" + i);
 		}
-		assertThrows(IndexOutOfBoundsException.class,()->{
+		assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.remove(15);
 		});
-		
-			
-		}
+
+	}
+
 	@Test
 	void should_remove_items_at_the_given_index() {
-		CustomArrayList<String> sut= new CustomArrayList<String>();
-	 for(int i=0; i<15;i++) {
-		 sut.add("pint"+i);
-		
-		
+		CustomArrayList<String> sut = new CustomArrayList<String>();
+		for (int i = 0; i < 15; i++) {
+			sut.add("pint" + i);
+
+		}
+		sut.remove(14);
+		assertEquals(14, sut.getSize());
 	}
-	 sut.remove(14);
-assertEquals(14,sut.getSize());
-}
 
 }
