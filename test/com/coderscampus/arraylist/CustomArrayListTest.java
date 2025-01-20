@@ -30,17 +30,18 @@ class CustomArrayListTest {
 		assertTrue(ans);
 
 	}
-	@Test 
+
+	@Test
 	void should_add_when_array_is_at_capacity() {
-		CustomArrayList<String> sut= new CustomArrayList<String>();
-		
-		for(int i=0; i<10;i++) {
-			sut.add(i, "string"+i);
+		CustomArrayList<String> sut = new CustomArrayList<String>();
+
+		for (int i = 0; i < 10; i++) {
+			sut.add(i, "string" + i);
 		}
-	boolean ans= sut.add(10, "string10");
-		assertTrue(ans);		
+		boolean ans = sut.add(10, "string10");
+		assertTrue(ans);
 		assertEquals(11, sut.getSize());
-		assertEquals("string10",sut.get(10));
+		assertEquals("string10", sut.get(10));
 	}
 
 	@Test
